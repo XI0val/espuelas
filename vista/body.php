@@ -12,8 +12,8 @@
 // }else{
 //     echo '<p style=font-size:14px; class="error">Something went wrong!</p>';
 // }
- 
-?> 
+
+?>
 
  <!-- Header/ menu / banners/ contenido /  footer -->
 
@@ -27,8 +27,6 @@ include "criador/login.html";
 include "about.php";
 
 include "ejemplares.php";
-
-
 
 include "footer.php";
 
