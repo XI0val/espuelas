@@ -423,8 +423,9 @@ header{
      }
      .login-box h2{
         font-size:  2em;
-        color: #F57D1F;
+        color: #92e0ff;
         text-align: center;
+        background-color: #ffffff47;
      }
      .input-box{
         position: relative;
@@ -438,9 +439,8 @@ header{
       font-size: 16px;
       color: #F57D1F;
      }
-     .recordar.rec-text{
-      font-size: 16px;
-      color: #F57D1F;
+     .ckeck1 a{
+      color: #386720;
      }
    .btn.login{
   background-color: #c7e7f3;
