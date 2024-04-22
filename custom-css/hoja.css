@@ -426,6 +426,9 @@ header{
         color: #92e0ff;
         text-align: center;
         background-color: #ffffff47;
+        -webkit-text-stroke-color:#4290c7 ;
+        -webkit-text-stroke-width: 3px;
+        
      }
      .input-box{
         position: relative;
