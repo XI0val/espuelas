@@ -1,3 +1,7 @@
+<?php
+include 'extra/session.php';
+?>
+
 <div class="container">
 
 

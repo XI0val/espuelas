@@ -19,17 +19,37 @@
 
 <?php
 
+session_start();
 
-include "menu.php"; 
-include "banner_principal.php";
-include "criador/login.html";
+// Comprueba si el usuario está logeado
+$logged_in = isset($_SESSION['user_id']);
 
-include "about.php";
+// Incluye el menú y el banner principal independientemente del estado de logueo
 
-include "ejemplares.php";
+include "menu.php";
+
+// Incluye el cuerpo de la página según el estado de logueo
+if ($logged_in) {
+    // Si el usuario está logeado, incluye las secciones que deseas mostrar cuando el usuario está logeado
+    include "vista/home.php"; // O cualquier otra sección que desees mostrar cuando el usuario está logeado
+} else {
+    // Si el usuario no está logeado, incluye la vista de login
+    include "criador/login.html";
+    include "banner_principal.php";
+    include "about.php";
+    include "ejemplares.php";
+}
+
+// Incluye otras secciones de la página, independientemente del estado de logueo
 
 
-
+// Incluye el pie de página
 include "footer.php";
+
+
+
+
+
+
 
 ?>
