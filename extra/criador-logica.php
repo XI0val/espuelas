@@ -1,7 +1,5 @@
 <?php 
-if(session_status() === PHP_SESSION_NONE){
-    session_start();
-}
+include '../../extra/session.php';
 include '../../modelo/criador-model.php';
 /**
  * comprobamos que dni y password estan correctamente formados
@@ -33,7 +31,7 @@ function checkLogin() {
         if($logado) {
             return true;
         }
-
+        
         //no se esta accediendo correctamente
     }else{
         return false;

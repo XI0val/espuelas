@@ -1,6 +1,5 @@
-require_once 'base-model.php';
-
 <?php 
+require_once 'base-model.php';
 class CriadorModel extends BaseModel{
     private $id_criador;
     private $nombre;
