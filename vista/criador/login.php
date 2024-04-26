@@ -1,14 +1,13 @@
 <?php
+/**
+* Gestión del login del usuario
+*/
+include '../../extra/session.php';
 
-include '../../extra/sesion.php';
+include '../../extra/criador-logica.php';
 
-include '../../extra/comprobaciones.php';
-
-if($_SERVER['REQUEST_METHOD'] == 'GET') {
-
-   //header('location: http://www.espuelas.com');
-
-}else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+//solo aceptamos llamadas post en esta pagina
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       if(checkLogin()){
          header('location: home.php');
       }else{
@@ -16,4 +15,6 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
          header('location: ../../index.php');
       }
 
+}else{
+   header('location: ../pagina_error.php');
 }

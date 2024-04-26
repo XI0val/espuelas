@@ -1,4 +1,5 @@
 <?php
+include '../../extra/definiciones.php';
 echo "Hola";
 // define('USER', 'xioval');
 
@@ -16,22 +17,29 @@ echo "Hola";
 //     exit("Error: " . $e->getMessage());
 
 // }
-class Conexiondb{
-    private static $instance = Null;
-    public static function conectar()
-    {
-        try{
+include '../../extra/definiciones.php';
+class Conexiondb
+{
+ private static $instance = NULL;
+
+    public static function conectar(){
+        try {
+
             if (!isset(self::$instance)) {
                 $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-                self::$instance = new PDO('mysql:host=localhost;dbname=criadero', 'root', '', $pdo_options);
+                self::$instance = new PDO(
+                    'mysql:host=' . HOST . ';dbname=' . DBNAME, 
+                    USER, 
+                    PASSWORD, 
+                    $pdo_options);
             }
-        return self::$instance;
-    }catch (PDOException $e) {
+            return self::$instance;
 
-        echo 'error de conexión a bd: ' . $e;
-      }
+        } catch (PDOException $e) {
+            echo 'error de conexión a bd: ' . $e;
+        }
     }
+
 }
-
-
+    
 ?>
