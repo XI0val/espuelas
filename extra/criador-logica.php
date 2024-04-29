@@ -8,6 +8,7 @@ include '../../modelo/criador-model.php';
  */
 function checkLogin() {
     if(isset($_POST['dni']) && isset($_POST['password']) && isset($_POST['login']) && $_SESSION === []) {
+        print_r($_POST);
         $errores = [];
         //filtramos dni primero para eliminar caracteres distintos de números o letras
         $dni = preg_replace("/[^a-zA-Z0-9]+/", "", $_POST['dni']);
@@ -34,7 +35,8 @@ function checkLogin() {
         
         //no se esta accediendo correctamente
     }else{
-        return false;
+        print_r('hola q tal');
+        // return false;
     }
 }
 

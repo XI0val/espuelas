@@ -1,25 +1,25 @@
-
-
-
 <?php
-// if (session_status() === PHP_SESSION_NONE){
-//     session_start();
-//     if(!isset($_SESSION['timeout'])){
-//         $_SESSION['timeout'] = time();
-//     }else if (time() - $_SESSION['timeout'] > 1800) {
-//         session_regenerate_id(true);
-//         //echo ('regenerado id');  // change session ID for the current session and invalidate old session ID
-//         $_SESSION['timeout'] = time();  // update creation time
-//     }
-// }
+include 'extra/session.php'; // Incluye el archivo de sesión
 
-// include "vista/criador/login.html";
+// Verifica si el usuario está logueado
+if (!isset($_SESSION['dni'])) {
+    // Si no está logueado muesta:
+include "vista/header.php"; 
+include "vista/menu.php"; 
+include "vista/banner_principal.php";
+include "vista/criador/login.html";
+include "vista/about.php";
+include "vista/ejemplares.php";
+include "vista/footer.php"; 
+} else {
+    // Si está logueado, redirige a home.php
+    header('Location: vista/criador/home.php');
+    exit(); 
+}
 
-include "vista/header.php";
-
-include "vista/body.php";
-
-
-
+// include "vista/footer.php";
 ?>
+
+
+
 

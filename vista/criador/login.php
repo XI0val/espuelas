@@ -13,8 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       }else{
          session_destroy();
          header('location: ../../index.php');
+      
       }
 
 }else{
-   header('location: ../pagina_error.php');
+   header('location:  ../vista/pagina_error.php');
 }

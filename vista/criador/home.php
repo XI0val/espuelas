@@ -2,7 +2,15 @@
 include '../../extra/session.php';
 
 if(isset($_SESSION['dni'])){
-    echo 'Aqui va la home del user con los iconos y tal y tal';
+    include '../header.php';
+    include "../menu.php"; 
+
+    include '../body.php';
+    
+//    include "../ejemplares.php";
+    include "../footer.php";    
 }else{
     header('Refresh:2, ../../index.php');
 }
+
+// echo 'Home';
