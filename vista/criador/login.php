@@ -9,13 +9,14 @@ include '../../extra/criador-logica.php';
 //solo aceptamos llamadas post en esta pagina
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       if(checkLogin()){
-         header('location: home.php');
+         header('location: vista/home.php');
       }else{
          session_destroy();
-         header('location: ../../index.php');
+         header('vista/pagina_error.php');
+        
       
       }
 
 }else{
-   header('location:  ../vista/pagina_error.php');
+   header('location:  vista/pagina_error.php');
 }
