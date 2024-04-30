@@ -11,20 +11,20 @@
 <div class="container ejemplares1">
  <div class="row">
     <h2 class="title1 text-center"> Machos</h2>
-   <div class="col-6 col-lg-6 col-md-6 wow slideInLeft " >
+   <div class="col-6 col-lg-6 col-md-6 wow fadeIn " >
       <img class="img-fluid  ejemplares-img " id="" src="img/right-img.jpeg" alt="">
     </div>
-    <div class="col-lg-6 col-md-6 col-6 wow zoomInRight">
+    <div class="col-lg-6 col-md-6 col-6 wow fadeIn">
        <img class="img-fluid ejemplares-img" id="" src="img/right-img.jpeg" alt="">
     </div>
       
   </div>
   <div class="row">
     
-   <div class="col-6 col-lg-6 col-md-6 wow slideInLeft " >
+   <div class="col-6 col-lg-6 col-md-6 wow fadeIn " >
       <img class="img-fluid  ejemplares-img " id="" src="img/right-img.jpeg" alt="">
     </div>
-    <div class="col-lg-6 col-md-6 col-6 wow zoomInRight">
+    <div class="col-lg-6 col-md-6 col-6 wow fadeIn">
        <img class="img-fluid ejemplares-img" id="" src="img/right-img.jpeg" alt="">
     </div>
       

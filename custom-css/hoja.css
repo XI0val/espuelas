@@ -1082,7 +1082,6 @@ header{
 }
 }
 
-
 .ejemplares-img{
   width: 50%;
   margin-bottom: 20px;
@@ -1091,7 +1090,7 @@ header{
 .fadeIn {
   /* Define la animación para zoomInRight */
   animation-name: fadeIn_ejemplares;
-  animation-duration: 3s; /* Duración de la animación */
+
 }
 
 
