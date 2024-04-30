@@ -6,6 +6,7 @@ if (!isset($_SESSION['dni'])) {
     // Si no está logueado muesta:
 include "vista/header.php"; 
 include "vista/menu.php"; 
+// include "vista/criador/login.php"; 
 include "vista/banner_principal.php";
 include "vista/criador/login.html";
 include "vista/about.php";

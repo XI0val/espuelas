@@ -12,8 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
          header('location: vista/home.php');
       }else{
          session_destroy();
-         header('vista/pagina_error.php');
-        
+         header('location: ../../index.php');
+         
       
       }
 

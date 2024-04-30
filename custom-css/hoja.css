@@ -20,6 +20,7 @@ body{
      /* background-image: url(../img/fondo.png);
      background-size: contain;
      background-repeat: repeat; */
+     background-image: url(../img/textura-fondo.png);
 }
 .wrapper{
  width: 100vw;
@@ -476,7 +477,6 @@ header{
   
    }
 
-  
 
    .btn.login:hover{
     --timing: linear(0, 0.3, 0.75, 1);
@@ -1010,14 +1010,14 @@ header{
 }
 
    /* /ABOUT */
-   .section2{
+   .ejemplares1{
     background-image: url(../img/fondo.png);
     background-size: cover;
     background-repeat: no-repeat;
-    mask-image: url("../img/mask-img.svg");
+    /* mask-image: url("../img/mask-img.svg");
       -webkit-mask-image: url("../img/mask-img.svg");
       mask-size: cover;
-      -webkit-mask-size:cover  ;
+      -webkit-mask-size:cover  ; */
       margin-bottom: 20px;
    }
     
@@ -1083,9 +1083,16 @@ header{
 }
 
 
+.ejemplares-img{
+  width: 50%;
+  margin-bottom: 20px;
+}
 
-
-
+.fadeIn {
+  /* Define la animación para zoomInRight */
+  animation-name: fadeIn_ejemplares;
+  animation-duration: 3s; /* Duración de la animación */
+}
 
 
 
