@@ -1,6 +1,6 @@
 <?php 
-include '../../extra/session.php';
-include '../../modelo/criador-model.php';
+include 'session.php';
+include '../modelo/criador-model.php';
 /**
  * comprobamos que dni y password estan correctamente formados
  * comprobamos si existen en bd

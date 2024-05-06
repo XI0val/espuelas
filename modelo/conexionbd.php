@@ -1,6 +1,6 @@
 <?php
-include '../../extra/definiciones.php';
-echo "Hola";
+include '../extra/definiciones.php';
+
 // define('USER', 'xioval');
 
 // define('PASSWORD', 'ainihon');
@@ -17,7 +17,7 @@ echo "Hola";
 //     exit("Error: " . $e->getMessage());
 
 // }
-include '../../extra/definiciones.php';
+
 class Conexiondb
 {
  private static $instance = NULL;
