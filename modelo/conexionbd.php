@@ -1,28 +1,11 @@
 <?php
-include '../extra/definiciones.php';
-
-// define('USER', 'xioval');
-
-// define('PASSWORD', 'ainihon');
-
-// define('HOST', 'localhost');
-
-// define('DATABASE', 'criadero');
-// try {
-
-//     $connection = new PDO("mysql:host=".HOST.";dbname=".DATABASE, USER, PASSWORD);
-
-// } catch (PDOException $e) {
-
-//     exit("Error: " . $e->getMessage());
-
-// }
-
+include '../../extra/definiciones.php';
 class Conexiondb
 {
- private static $instance = NULL;
+    private static $instance = NULL;
 
-    public static function conectar(){
+    public static function conectar()
+    {
         try {
 
             if (!isset(self::$instance)) {
@@ -41,5 +24,22 @@ class Conexiondb
     }
 
 }
+
+// define('USER', 'xioval');
+
+// define('PASSWORD', 'ainihon');
+
+// define('HOST', 'localhost');
+
+// define('DATABASE', 'criadero');
+// try {
+
+//     $connection = new PDO("mysql:host=".HOST.";dbname=".DATABASE, USER, PASSWORD);
+
+// } catch (PDOException $e) {
+
+//     exit("Error: " . $e->getMessage());
+
+// }
     
 ?>

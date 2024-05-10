@@ -1,6 +1,7 @@
-<?php 
+<?php
 require_once 'base-model.php';
-class CriadorModel extends BaseModel{
+
+ class CriadorModel extends BaseModel{
     private $id_criador;
     private $nombre;
     private $primer_apellido;
@@ -107,7 +108,7 @@ class CriadorModel extends BaseModel{
 
     /**
      * actualización de los datos de un usuario
-     * $criador = objeto de la clase Criador con los campos a actualizar
+     * $criador = array con los campos a actualizar
      * se devuelve true o false
      */
     function actualizaCriador($datos)
@@ -119,36 +120,25 @@ class CriadorModel extends BaseModel{
         $pdo = $this->getpdo();
         if ($pdo != null) {
             try {
-                //abrimos la transacción
-                $pdo->beginTransaction();
 
-                //foreach ($this as $key => $value) {
                 foreach ($datos as $key => $value) {
                     //solo actualizamos los valores que nos interesan y nunca el id_criador
                     if ($value != null && $key != "id_criador") {
                         $sql = "UPDATE criador SET " . $key . " = ? WHERE id_criador = ?";
-                        //si es una password la encriptamos
-                        if ($key === "password") {
-                            $value = (new BaseController())->creaHash($value);
-                        }
+
                         $stmt = $pdo->prepare($sql);
                         $stmt->execute([$value, $datos["id_criador"]]);
-                        //$stmt->execute([$value, $this->id_criador]);
                     }
                 }
-                //si todo es correcto hacemos commit de los updates
-                $pdo->commit();
                 $correcto = true;
 
             } catch (Exception $e) {
                 echo $e->getMessage();
-                //Rollback the transaction.
-                $pdo->rollBack();
                 $correcto = false;
             }
             return $correcto;
         } else {
-            echo 'errorDB';
+            return false;
         }
     }
 

@@ -1,5 +1,5 @@
 <?php 
-include 'session.php';
+include '../extra/session.php';
 include '../modelo/criador-model.php';
 /**
  * comprobamos que dni y password estan correctamente formados
@@ -8,7 +8,7 @@ include '../modelo/criador-model.php';
  */
 function checkLogin() {
     if(isset($_POST['dni']) && isset($_POST['password']) && isset($_POST['login']) && $_SESSION === []) {
-        print_r($_POST);
+        //print_r($_POST);
         $errores = [];
         //filtramos dni primero para eliminar caracteres distintos de números o letras
         $dni = preg_replace("/[^a-zA-Z0-9]+/", "", $_POST['dni']);
@@ -36,7 +36,7 @@ function checkLogin() {
         //no se esta accediendo correctamente
     }else{
         print_r('hola q tal');
-        // return false;
+        //return false;
     }
 }
 
@@ -123,8 +123,7 @@ function checkCredenciales($dni, $pass){
         //si pass correcta
         if(password_verify($pass, $datosCriador['password'])){
             unset($datosCriador['password']);
-            $_SESSION = $datosCriador;
-            //print_r(json_encode($_SESSION));
+            $_SESSION['criador'] = $datosCriador;
             return true;
         }
     }
@@ -137,4 +136,12 @@ function checkCredenciales($dni, $pass){
  */
 function hashPassword($pass){
     return password_hash($pass, PASSWORD_DEFAULT, ['cost' => 10]);
+}
+
+/**
+ * funcion que edita un criador
+ * se devuelve true o false
+ */
+function editaCriador($datos) {
+    return (new CriadorModel())->actualizaCriador($datos);
 }
