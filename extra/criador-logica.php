@@ -1,6 +1,6 @@
 <?php 
-include '../extra/session.php';
-include '../modelo/criador-model.php';
+include '../../extra/session.php';
+include '../../modelo/criador-model.php';
 /**
  * comprobamos que dni y password estan correctamente formados
  * comprobamos si existen en bd
@@ -8,7 +8,7 @@ include '../modelo/criador-model.php';
  */
 function checkLogin() {
     if(isset($_POST['dni']) && isset($_POST['password']) && isset($_POST['login']) && $_SESSION === []) {
-        //print_r($_POST);
+        var_dump($_SESSION);
         $errores = [];
         //filtramos dni primero para eliminar caracteres distintos de números o letras
         $dni = preg_replace("/[^a-zA-Z0-9]+/", "", $_POST['dni']);
@@ -30,12 +30,13 @@ function checkLogin() {
         $logado = checkCredenciales($dni, $pass);
 
         if($logado) {
+            var_dump("Inicio de sesión exitoso");
             return true;
         }
         
         //no se esta accediendo correctamente
     }else{
-        print_r('hola q tal');
+        print_r('No se han enviado datos de inicio de sesión.');
         //return false;
     }
 }
@@ -47,6 +48,7 @@ function checkLogin() {
  */
 function validaDni($dni)
 {
+    var_dump($dni);
     //extraemos parte letra
     $letra = substr($dni, -1);
     //extraemos parte numerdnio
@@ -119,6 +121,7 @@ function validaPass($pass){
 function checkCredenciales($dni, $pass){
     //recuperamos datos del usuario por dni
     $datosCriador = (new CriadorModel())->criadorPorDni($dni);
+    var_dump($datosCriador);
     if($datosCriador != null){
         //si pass correcta
         if(password_verify($pass, $datosCriador['password'])){

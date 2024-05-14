@@ -5,7 +5,7 @@ include 'extra/session.php';
 <div class="container">
 
 
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
+<nav class=" navbar fixed-top navbar-expand-lg p-md-3">
       <div class="container">
         <a class="navbar-brand" href="#">Web Zone</a>
         <button
@@ -24,19 +24,19 @@ include 'extra/session.php';
           <div class="mx-auto"></div>
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link text-white" href="#nosotros">Nosotros</a>
+              <a class="nav-link " href="#nosotros">Nosotros</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#">Ejemplares</a>
+              <a class="nav-link " href="#">Ejemplares</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#">Dónde estamos</a>
+              <a class="nav-link " href="#">Dónde estamos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#">Contacto</a>
+              <a class="nav-link " href="#">Contacto</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#">..</a>
+              <a class="nav-link " href="#">..</a>
             </li>
             <li class="nav-item">
               <button id="btn-modal" class="btn-login"><i class="fa-brands fa-jenkins"></i></button>
@@ -54,7 +54,7 @@ include 'extra/session.php';
         </div>
       </div>
     </nav>
-
+   <span class="target"> </span>
     </div>
 
                         

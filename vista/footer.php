@@ -130,6 +130,8 @@
      
 </div>  <!--fin wrapper -->
   <script src="js/jquery.min.js"></script>
+  <script defer src="js/script.js"></script>
+     <script src="js/carousel.js"></script>
   <script src="js/bootstrap.js"></script>
   <script src="js/plugins.js"></script>
   <script src="fonts/js/all.js"></script>

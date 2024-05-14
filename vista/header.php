@@ -30,8 +30,7 @@
               </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-     <script defer src="js/script.js"></script>
-     <script src="js/carousel.js"></script>
+     
     <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->

@@ -1,3 +1,19 @@
+// BARRA NAVBAR
+
+const  scroller=document.querySelector('.navbar');
+
+window.addEventListener('scroll', () => {
+ if (window.scrollY > 90) {
+ 	scroller.classList.add('nav-scrolled');
+ }else if (window.scrollY <= 90){
+    scroller.classList.remove('nav-scrolled');
+ }
+});
+
+// ANIMACION SUBRAYADO
+
+
+
 // LOGIN//
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -52,13 +68,13 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-        if (entry.isIntersecting && entry.intersectionRatio >= 0.4) {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
             entry.target.classList.add('show');
         } else {
             entry.target.classList.remove('show');
         }
     });
-}, { threshold: 0.4 });
+}, { threshold: 0.5 });
 
     
 // Espera a que el contenido HTML de la página se haya cargado completamente
