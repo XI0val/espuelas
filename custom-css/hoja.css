@@ -38,6 +38,14 @@ header{
  text-decoration: none;
  }
 
+.navbar-brand{
+font-family: 'Karla', sans-serif;
+color: #f8f2f2;
+font-weight: 500;
+    font-size: 22px;
+    font-style: oblique;
+}
+
 .navbar a:hover{
 
  color: #AAD7D9;
@@ -53,7 +61,7 @@ header{
 	box-shadow: 0 3px 10px rgba(0, 0, 0, 1.5);
   color: #0e172e;
 }
-.nav-scrolled .nav-link {
+.nav-scrolled .nav-link .navbar-brand {
 	color:  #0e172e; /* Color de texto cuando el fondo es claro */
 }
 .nav-scrolled .nav-link:hover {
@@ -86,6 +94,7 @@ header{
 .fa-jenkins:hover{
   color: #e32746;
 }
+
 /* <!-- Carrusel --> */
 
 .carousel{
@@ -106,10 +115,10 @@ header{
 
 .carousel .list .item .content{
     position: absolute;
-    top: 320px;
+    top: 410px;
     width: 1140px;
     max-width: 80%;
-    left: 50%;
+    left: 44%;
     transform: translate(-50%);
     padding-right: 30%;
     box-sizing: border-box;
@@ -119,15 +128,15 @@ header{
 
 .carousel .list .item .content .nombre{
     font-family:"Bebas Neue", sans-serif; 
-     
     font-weight: bold;
     letter-spacing: 5px;
     font-size: 3em;
+    text-shadow: #0e172e;
 }
 .carousel .list .item .content .titulo{
-    font-family:"Comfortaa", sans-serif;
+    font-family: "Karla","Comfortaa", sans-serif;
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 1.2em;
     list-style: 1.3em;
 }
 
@@ -137,7 +146,7 @@ header{
 .thumbnail{
     position: absolute;
     bottom: 50px;
-    left: 50%;
+    left: 55%;
     width: max-content;
     z-index: 100;
     display: flex;
@@ -168,7 +177,7 @@ header{
 /* <!-- FLECHAS --> */
 .flecha{
     position: absolute;
-    top: 80%;
+    top: 85%;
     right: 52%;
     width: 300px;
     max-width: 30%;
@@ -221,7 +230,7 @@ header{
          animation-delay: 1.2s;
    }
    .carousel .list .item:nth-child(1) .buttons{
-    animation-delay: 1.4s;
+    animation-delay: 1.9s;
 }
 
    /* efecto next click */
@@ -233,7 +242,7 @@ header{
        left: 50px;
        bottom:50px;
        border-radius: 20px;
-       animation: showImage 0.5s linear 1 forwards;
+       animation: showImage 1.2s linear 1 forwards;
    }
  
    /* Imágenes slider */
@@ -257,13 +266,13 @@ header{
     
    }
    .carousel.next .list .item:nth-child(1) img {
-    /*Aquíaplicamosladuracióndelaanimación*/
+    /*Aquí aplicamos la duración de la animación*/
     animation: showImage 1s linear 1 forwards;
     -webkit-animation: showImage 1s linear 1 forwards;
 }
 
 .carousel.prev .list .item:nth-child(2) img {
-    /*Aquíaplicamosladuracióndelaanimación*/
+    /*Aquí aplicamos la duración dela animación*/
     animation: outImage 1s linear 1 forwards;
     -webkit-animation: outImage 1s linear 1 forwards;
 }
@@ -297,7 +306,7 @@ header{
      position: absolute;
      bottom: 0;
      left: 0;
-     animation: outImage 0.5s linear 1 forwards;
+     animation: outImage 1.2s linear 1 forwards;
    }
    @keyframes outImage {
     from {
@@ -925,8 +934,7 @@ header{
         width: 100vw;
       }
       #contenido-ejemplares .container img {
-             width: 100vw;
-             height: 50vw;
+           
       }
 
 
@@ -1196,7 +1204,38 @@ header{
   margin-bottom: 20px;
   clip-path: ellipse(32% 43% at 50% 50%);
   -webkit-clip-path:ellipse(32% 43% at 50% 50%);
+  transition: 6;
+  -webkit-transition: 6;
+  -moz-transition: 6;
+  -ms-transition: 6;
+  -o-transition: 6;
 }
+.clip:hover .ejemplares-img{
+  transform: scale(0.7);
+  -webkit-transform: scale(0.7);
+  -moz-transform: scale(0.7);
+  -ms-transform: scale(0.7);
+  -o-transform: scale(0.7);
+  clip-path: inset(1% 0 6% 3%);
+  -webkit-clip-path:inset(1% 0 6% 3%);
+}
+/* .tarjeta{
+  height: 400px;
+  margin: 40px;
+  box-shadow: 5px 5px 20px black;
+  overflow: hidden;
+}
+.horse-name{
+  height: 70px; 
+  width: 350px;
+  padding: 6px;
+  box-sizing: border-box;
+  position: absolute;
+  background: rgb(27, 27, 27, .5);
+}
+ */
+
+
 .title1{
   color: #b2cee0;
   font-size: 50px;

@@ -12,8 +12,8 @@ let thumbnailDom = document.querySelector('.carousel .thumbnail');
 prevDom.onclick = function(){
     showSlider('prev');
 }
-let timeRunning = 5000; // Duración de la transición
-let timeAutoNext = 6000; // Tiempo entre cambios automáticos
+let timeRunning = 9000; // Duración de la transición
+let timeAutoNext = 10000; // Tiempo entre cambios automáticos
 let runTimeOut;
 let runAutoRun = setTimeout(()=>{
    nextDom.click();

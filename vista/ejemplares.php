@@ -15,9 +15,18 @@
    </div>
   <div class="row">
     
-   <div class="col-6 col-lg-6 col-md-6  mob20 wow fadeIn clip" >
+   <div class="col-6 col-lg-6 col-md-6  mob20 wow fadeIn " >
+      <div class="tarjeta">
+      <div class="clip">
       <img class="img-fluid ejemplares-img " id="" src="img/horses/ejemplar1.jpg" alt="">
+      </div>
+      <div class="horse-name">
+         <h1>Lorem ipsum</h1>
+      </div>
+      </div>
     </div>
+    
+    
     <div class="col-6 col-lg-6 col-md-6 mob20 wow fadeIn clip">
        <img class="img-fluid ejemplares-img" id="" src="img/horses/ejemplar2.jpg" alt="">
     </div>

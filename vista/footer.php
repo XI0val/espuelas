@@ -79,7 +79,7 @@
         <div class="col-lg-3 col-md-12 mb-4 mb-md-0 text-center">
 
             <div class="rounded-circle bg-white shadow-1-strong d-flex align-items-center justify-content-center mb-4 mx-auto" style="width: 150px; height: 150px;">
-                 <img src="https://mdbootstrap.com/img/Photos/new-templates/animal-shelter/logo.png" height="70" alt=""
+                 <img src="img/logotipo-footer.png" height="100%" width="100%"  alt=""
                  loading="lazy" />
             </div>
          </div>
