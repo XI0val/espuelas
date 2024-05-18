@@ -14,7 +14,7 @@ if(!isset($_SESSION['criador']['dni'])){
  */
 function altaAnimal($datos) {
     $animalModel = new AnimalModel($datos);
-    //print_r($animal);
+    //var_dump($animalModel);
     $resultAlta = $animalModel->insertaAnimal($animalModel);
     return $resultAlta;
 }
@@ -32,9 +32,9 @@ function editaAnimal($animal){
  * funcion que solicita borrado de un animal
  * recibe un id_animal para borrar
  */
-function borraAnimal($id_animal){
-    $resultDelete = (new AnimalModel())->eliminaAnimal($id_animal);
-    return $resultDelete;    
+function borraAnimal($animal){
+$resultDelete = (new AnimalModel())->eliminaAnimal($animal['id_animal']);
+    return $resultDelete;
 }
 
 /**

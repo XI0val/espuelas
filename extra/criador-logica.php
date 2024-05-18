@@ -8,7 +8,6 @@ include '../../modelo/criador-model.php';
  */
 function checkLogin() {
     if(isset($_POST['dni']) && isset($_POST['password']) && isset($_POST['login']) && $_SESSION === []) {
-        var_dump($_SESSION);
         $errores = [];
         //filtramos dni primero para eliminar caracteres distintos de números o letras
         $dni = preg_replace("/[^a-zA-Z0-9]+/", "", $_POST['dni']);
@@ -23,20 +22,16 @@ function checkLogin() {
             $errores['pass'] = 'mal password';
         }
 
-        //si no hay errores hasheamos pass
-        $passHasheada = hashPassword($pass);
-
         //comprobamos credenciales en bd
         $logado = checkCredenciales($dni, $pass);
 
         if($logado) {
-            var_dump("Inicio de sesión exitoso");
             return true;
         }
         
         //no se esta accediendo correctamente
     }else{
-        print_r('No se han enviado datos de inicio de sesión.');
+        print_r('hola q tal');
         //return false;
     }
 }
@@ -48,7 +43,6 @@ function checkLogin() {
  */
 function validaDni($dni)
 {
-    var_dump($dni);
     //extraemos parte letra
     $letra = substr($dni, -1);
     //extraemos parte numerdnio
@@ -121,7 +115,6 @@ function validaPass($pass){
 function checkCredenciales($dni, $pass){
     //recuperamos datos del usuario por dni
     $datosCriador = (new CriadorModel())->criadorPorDni($dni);
-    var_dump($datosCriador);
     if($datosCriador != null){
         //si pass correcta
         if(password_verify($pass, $datosCriador['password'])){
@@ -143,8 +136,16 @@ function hashPassword($pass){
 
 /**
  * funcion que edita un criador
- * se devuelve true o false
+ * se devuelve ture o false
  */
 function editaCriador($datos) {
     return (new CriadorModel())->actualizaCriador($datos);
+}
+
+/**
+ * funcion para comparar dos passwords
+ * devuelve true si correcto , false si error
+ */
+function comparaPasswords($passwords){
+    return ($passwords[0] === $passwords[1]) ? true : false;
 }

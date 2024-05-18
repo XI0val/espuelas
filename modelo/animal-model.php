@@ -12,6 +12,7 @@ require_once 'base-model.php';
     private $id_familia;
     private $id_ubicacion;
     private $id_criador;
+    private $imagen;
 
 
     function __construct(...$args)
@@ -31,6 +32,7 @@ require_once 'base-model.php';
                 $this->id_familia = $args[0]->getidfamilia();
                 $this->id_ubicacion = $args[0]->getidubicacion();
                 $this->id_criador = $args[0]->getidcriador();
+                $this->imagen = $args[0]->getimagen();
             } else {//si es un array
                 $this->id_animal = $args[0]["id_animal"];
                 $this->nombre = $args[0]["nombre"];
@@ -42,6 +44,8 @@ require_once 'base-model.php';
                 $this->id_familia = $args[0]["id_familia"];
                 $this->id_ubicacion = $args[0]["id_ubicacion"];
                 $this->id_criador = $args[0]["id_criador"];
+                $this->imagen = $args[0]["imagen"];
+
             }
         }
     }
@@ -127,6 +131,14 @@ require_once 'base-model.php';
     {
         $this->id_criador = $id_criador;
     }
+    public function getimagen()
+    {
+        return $this->imagen;
+    }
+    public function setimagen($imagen)
+    {
+        $this->imagen = $imagen;
+    }    
 
     /**
      * actualización de los datos de un animal
@@ -177,11 +189,10 @@ require_once 'base-model.php';
                 return $stmt->execute([$id_animal]);
 
             }catch(Exception $e){
-                echo $e->getMessage();
-                $result = false;
+                return $e->getMessage();
             }
         } else {
-            echo 'errorDB';
+            return 'errorDB';
 
         }
     }
@@ -192,10 +203,11 @@ require_once 'base-model.php';
      */
     function insertaAnimal($animal)
     {
+        //var_dump($animal);
         $pdo = $this->getpdo();
         if ($pdo != null) {
             try{
-                $sql = "INSERT INTO animal VALUES(?, ?, ?, ?, ?, ?, ?, ?, ? ,?)";
+                $sql = "INSERT INTO animal VALUES(?, ?, ?, ?, ?, ?, ?, ?, ? ,? ,?)";
 
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute([
@@ -209,6 +221,7 @@ require_once 'base-model.php';
                     $animal->getidfamilia(),
                     $animal->getidubicacion(),
                     $animal->getidcriador(),
+                    $animal->getimagen(),
                 ]);
                 $id_animal = $pdo->lastInsertId();
                 return $id_animal;
@@ -223,6 +236,33 @@ require_once 'base-model.php';
         }
     }
 
+    /**
+     * recuperamos los animales de una ubicacion
+     * devolvemos el numero de animales encontrados o 1 si falla la query
+     */
+    function animalesPorUbicacion($id_ubicacion)
+    {
+        
+        $pdo = $this->getpdo();
+        if ($pdo != null) {
+            try{
+                $stmt = $pdo->prepare("SELECT COUNT(*) as total FROM animal where id_ubicacion = :idubicacion");
+                $stmt->bindParam(":idubicacion", $id_ubicacion, PDO::PARAM_STR);
+                $stmt->execute();
+        
+                    $animales = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+                    return $animales['total'];
+
+            }catch(Exception $e){
+                return $e->getMessage();
+
+            }
+        } else {
+            return 'errorDB';
+
+        }
+    }
     /**
      * recuperamos los datos del animal por su id
      * devolvemos null o array con los datos del animal

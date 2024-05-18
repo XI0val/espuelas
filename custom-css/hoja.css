@@ -21,6 +21,7 @@ body{
      background-size: contain;
      background-repeat: repeat; */
      background-image: url(../img/textura-fondo.png);
+   
 }
 .wrapper{
  width: 100vw;
@@ -946,7 +947,7 @@ font-weight: 500;
 
 
 /* Escritorio pequeño / tablet */
-@media only screen and (min-width: 768px) and (max-width: 991px){
+@media screen and (min-width: 768px) and (max-width: 991px){
   .container .first{
     margin: 0;
  
@@ -1295,3 +1296,256 @@ font-weight: 500;
 /* .pie{
  width: 100rem;
 } */
+
+
+
+
+/*çççççç HOME_CRIADOR çççççççç*/
+/* separador de menus */
+p {
+  padding-left: 50px;
+}
+
+.wrapper2{
+  margin-top: -50px;
+}
+
+.barra-user{
+  width: 100vw;
+  height: 143px;
+  background: linear-gradient(70deg, #14081b, #4b7996) !important;
+  box-shadow: 5px 3px 5px #0d0e0f;
+  z-index: 100000;
+}
+.underlineh{
+  height: 5px;
+  width: 20%;
+  margin-left: 40%;
+  margin-top: 1px;
+  background-color: #30d9e7;
+  opacity: 0.6;
+ 
+}
+.img-usuario{
+  margin-left: 14px;
+  border-radius: 75px;
+  width: 34%;
+  margin-top: -4px;
+  transform: translate(137px);
+}
+.wow.slideInLeft {
+  animation-name: underline-user;
+  transform:translateX(-42%);
+  animation-duration: 3s;
+} 
+@keyframes underline-user {
+  from {
+    opacity: 0;
+    transform:translateX(-300%);
+    
+  
+}
+  to {
+    opacity: 1;
+    transform:translateX(-40%);
+   
+   
+}
+}
+
+#map {
+  height: 100%;
+}
+
+
+.containerForm {
+  display: flex;
+  justify-content: center;
+  box-shadow:0 1px 3px 0 rgba(0,0,0,0.16),2px 0px 0px 0px rgba(0,0,0,0.12) inset; 
+  min-width: 0;
+  min-height: 0;
+  padding: 10px;
+}
+.logotipo{
+ margin-left: 35px;
+ width: 35%;
+ box-shadow: 3px 1px 7px #0d0e0f;
+    border-radius: 45px
+}
+.bodyHome.logotipo:hover{
+  color: #e5e5e5;
+
+}
+.welcome{
+  font-family: 'Karla',sans-serif;
+  color: #e5e5e5;
+  margin-top: 17px;
+  letter-spacing: 0.1rem;
+}
+
+.logo-out{
+  width: 30%;
+  transform: translate(88px, 16px);
+}
+.logo-out a img:hover{
+  color: #f91616;
+  border: #30d9e7;
+ box-shadow: 3px 1px 7px #0c66c0;;
+}
+
+
+.bodyMenu {
+ background-image: url('../img/home-img/fondo-home.jpg');
+ backdrop-filter: invert(80%);
+  padding: 0;
+  
+  margin-top: -40px;
+  height: 100vw;
+
+  /* width: 100vw; */
+  /* padding: 100px; */
+  /* min-height: 40vw; */
+}
+
+.menu-criador{
+ 
+}
+
+.nav__list{
+  background-color: rgb(61 179 150 / 50%);
+ 
+  margin-bottom: 15%;
+  margin-top: 6%;
+  display: flex;
+  /* justify-content: space-between; */
+list-style: none;
+position: relative; 
+height: 208px;
+border-radius: 29px;
+    box-shadow: 3px 1px 7px #0d0e0f;
+}
+
+.nav__list a{
+display:block;
+color:#333;
+text-decoration:none;
+font-weight:700;
+font-size:12px;
+line-height:32px;
+padding:10px 10px;
+}
+
+.nav__list li{
+  transform: translate(0px, 28px);
+  box-shadow: 3px 1px 7px #0d0e0f;
+    border-radius: 29px;
+position: relative;
+  /* min-width: 180px; */
+float:  left;
+margin: 0;
+padding: 0;
+}
+
+.nav__list li:hover{
+background-color: rgb(13, 111, 167);
+}
+.nav__list li a:hover{
+ color: #ffeeff;
+}
+
+.nav__list ul{
+display: none;
+position: absolute;
+min-width: 168px;
+top: 86%;
+left: 0;
+/* background-color: #dce0e2; */
+padding: 0;
+list-style: none;
+height: 100%;
+}
+
+.nav__list ul li{
+  position: relative;
+  margin-top: 8px;
+  box-shadow: 3px 1px 7px #0d0e0f;
+/* 	float: none;
+width: 200px; */
+}
+
+.nav__list ul a{
+ line-height: 120%;
+padding: 10px 15px;
+}
+
+.nav__list ul ul{
+position: absolute;
+top: -22px;
+    left: 36%;
+/* background-color: #dce0e2; */
+}
+
+.nav__list li:hover > ul{
+display: block;
+}
+
+.sub-menu {
+display: none;
+margin-left: 70px;
+margin-top: -16px;
+position: relative;
+min-width: 100px;
+}
+
+.sub-menu > li > a {
+padding: 13px 24px;
+/* background: #fff; */
+display: block;
+color: #333;
+margin-top: -7px;
+}
+
+.sub-menu > li a:hover {
+/* color: #fff; */
+background: #56baeb;
+border-radius: 70px;
+}
+
+/* formularios */
+.forms{
+  background: rgb(61 179 150 / 50%);
+  box-shadow: 3px 1px 7px #0d0e0f;;
+}
+.formularios{
+  margin: 7px 27px 5px;
+}
+.photo-form{
+  margin-top: 10px;
+}
+.userform-img{
+  transform: translate(-49%);
+  border-radius: 10px;
+  width: 25%;
+}
+
+.btn-upph input[type="file"]::file-selector-button {
+  background-image: linear-gradient(
+      to right,
+      #18ecff,
+      #bfe64c,
+      #319197 100%,
+      #ef9967 200%
+  );
+  background-position-x: 0%;
+  background-size: 200%;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  text-shadow: 0 1px 1px #333;
+  transition: all 0.25s;
+  }
+  input::file-selector-button:hover {
+  background-position-x: 100%;
+  transform: scale(1.1);
+  }

@@ -1,0 +1,41 @@
+
+                <div class="content forms">
+                    <div class="text-center title-form">
+                        <h1>Nueva ubicación:</h1>
+                    <div class="row">
+                        <div class="col-12">
+                        <form action="home.php" method="POST">
+                            <div class="row g-4">
+                                <div class="col-12  text-center">
+                                    <label for="nombre" class="form-label">Nombre:</label>
+                                    <input class="form-control" style="width: 50%; transform: translate(55%);" type="text" name="nombre" placeholder="nombre" required>
+                                </div>
+                                <br>
+                                <div class="row" style="margin-top: 25px;">
+                                    <div class="col-4">
+                                    <label for="latitud" style="transform: translate(100%)" class="form-label">Latitud:</label>
+                                    <input class="form-control" style="transform: translate(55%)"  type="text" name="latitud" placeholder="latitud" required>
+                                </div>
+                             
+                                <div class="col-4">
+                                    <label for="longitud" style="transform: translate(105%)" class="form-label">Longitud:</label>
+                                    <input class="form-control"style="transform: translate(55%)"  type="text" name="longitud" placeholder="longitud" required>
+                                 </div>
+                                </div>
+                                <hr>
+                                <div class="row ">
+                                <div class="col-4 text-center">
+                                    <input  style="transform: translate(180%)" class="btn btn-primary" type="submit" name="crear_ubicacion" value="Crear">
+                                </div>
+                                <div class="col-4 text-cente">
+                                    <input style="transform: translate(80%)" class="btn btn-secondary" type="submit" name="cancelar" value="cancelar" onClick="document.location.href='home.php';">
+                                </div>
+                            </div>
+                            </div>
+                            <input type="hidden" name="form" value="uc"/>
+                        </form>
+                        <br>
+                    </div>
+                </div>
+                </div> <!-- fin row -->
+                </div><!-- fin form -->

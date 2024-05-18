@@ -1,11 +1,5 @@
-<?php
-include 'extra/session.php';
-?>
-
 <div class="container">
-
-
-<nav class=" navbar fixed-top navbar-expand-lg p-md-3">
+ <nav class=" navbar fixed-top navbar-expand-lg p-md-3">
       <div class="container">
         <a class="navbar-brand" href="#">  <!--<img class="img-fluid" width="12%" height="10%" src="img/logotipo-web.png" alt="">--> Gahemor Criaderos </a> 
         <button

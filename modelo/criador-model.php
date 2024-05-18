@@ -1,6 +1,5 @@
 <?php
 require_once 'base-model.php';
-require_once '../../extra/controler-base.php';
 
  class CriadorModel extends BaseModel{
     private $id_criador;
@@ -20,7 +19,7 @@ require_once '../../extra/controler-base.php';
 
         if (count($args) > 0) {
             if (is_a($args[0], "CriadorModel")) {//si nos llega un objeto Criador
-                $this->id_criador = $args[0]->getidcriador();
+                $this->id_criador = 0;
                 $this->nombre = $args[0]->getnombre();
                 $this->primer_apellido = $args[0]->getprimer_apellido();
                 $this->segundo_apellido = $args[0]->getsegundo_apellido();
@@ -29,7 +28,7 @@ require_once '../../extra/controler-base.php';
                 $this->password = $args[0]->getpassword();
                 $this->imagen = $args[0]->getimagen();
             } else {//si es un array
-                $this->id_criador = $args[0]["id_criador"];
+                $this->id_criador = 0;
                 $this->nombre = $args[0]["nombre"];
                 $this->primer_apellido = $args[0]["primer_apellido"];
                 $this->segundo_apellido = $args[0]["segundo_apellido"];
@@ -109,11 +108,12 @@ require_once '../../extra/controler-base.php';
 
     /**
      * actualización de los datos de un usuario
-     * $criador = array con los campos a actualizar
+     * $datos = array con los campos a actualizar
      * se devuelve true o false
      */
     function actualizaCriador($datos)
     {
+        //print_r($datos);
 
         $correcto = false;
 
@@ -129,6 +129,14 @@ require_once '../../extra/controler-base.php';
 
                         $stmt = $pdo->prepare($sql);
                         $stmt->execute([$value, $datos["id_criador"]]);
+                    }
+                }
+
+                //actualizamos los valores en $_SESSION para el criador
+                foreach ($datos as $key => $value) {
+                    if(isset($_SESSION['criador'][$key]) && $key != 'id_criador' && $key != 'imagen'){
+
+                        $_SESSION['criador'][$key] = $value;
                     }
                 }
                 $correcto = true;
@@ -161,53 +169,27 @@ require_once '../../extra/controler-base.php';
         }
     }
 
-/**
- * recuperamos los datos de la criador por su dni
- * devolvemos null o array con los datos del criador
- */
-function criadorPorDni($dni)
-{
-    
-    $pdo = $this->getpdo();
-    if ($pdo != null) {
-
-        $stmt = $pdo->prepare("SELECT * FROM criador where dni = :dni");
-        $stmt->bindParam(":dni", $dni, PDO::PARAM_STR);
-        $stmt->execute();
-
-        $rows = $stmt->rowCount();
-        if ($rows === 1) {
-            $datos = $stmt->fetch(\PDO::FETCH_ASSOC);//cargamos en datos el resultado
-        } else {
-            $datos = null;
-        }
-        return $datos;
-    } else {
-        echo 'errorDB';
-
-    }
-}
-
     /**
-     * hasheamos la password y luego
-     * comprobamos usuario y pass
+     * recuperamos los datos de la criador por su dni
+     * devolvemos null o array con los datos del criador
      */
-    function compruebaLogin($dni, $pass)
+    function criadorPorDni($dni)
     {
-        //hasheamos la pwd para guardarla en bd
-        $passHasheada = ControllerBase::creaHash($pass);
-        $datos = array();
+        
         $pdo = $this->getpdo();
         if ($pdo != null) {
-            $stmt = $pdo->prepare("SELECT * FROM criador where dni = ? and password = ?");
-            $stmt->execute([$dni, $passHasheada]);
+
+            $stmt = $pdo->prepare("SELECT * FROM criador where dni = :dni");
+            $stmt->bindParam(":dni", $dni, PDO::PARAM_STR);
+            $stmt->execute();
+
             $rows = $stmt->rowCount();
             if ($rows === 1) {
                 $datos = $stmt->fetch(\PDO::FETCH_ASSOC);//cargamos en datos el resultado
-                unset($datos["password"]);
+            } else {
+                $datos = null;
             }
-            //return $datos;
-            return $passHasheada;
+            return $datos;
         } else {
             echo 'errorDB';
 
@@ -230,4 +212,46 @@ function criadorPorDni($dni)
 
         }
     }
+
+
+    /**
+     * Inserción de un nuevo criador (SOLO LO EJECUTA EL ADMIN DESDE POSTMAN)
+     * Se recibe objeto de la clase CriadorModel 
+     * 
+     */
+    public function altaCriador($criador)
+    {
+
+        $pdo = $this->getpdo();
+        if ($pdo != null) {
+            $sqlp = "INSERT INTO criador VALUES(?, ?, ?, ?, ? ,? ,? ,?)";
+
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            try {
+
+                $stmt = $pdo->prepare($sqlp);
+                $stmt->execute([
+                    null,
+                    $criador->getnombre(),
+                    $criador->getprimer_apellido(),
+                    $criador->getsegundo_apellido(),
+                    $criador->getdni(),
+                    $criador->getciudad(),
+                    $criador->getpassword(),
+                    $criador->getimagen()
+                ]);
+                //devolvemos el id del criador añadido;
+                $id_criador = $pdo->lastInsertId();
+                return $id_criador;
+
+            } catch (\Exception $e) {
+                return $e;//se devuelve error
+            }
+        } else {
+            echo 'errorDB';
+        }
+    }
+
  }
+
+ 

@@ -10,18 +10,18 @@ include '../../extra/criador-logica.php';
 
 //solo aceptamos llamadas post en esta pagina
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  
+//   var_dump($_POST);
    //si check correcto..
    if(checkLogin()){
-         // header('location: home.php');
-         echo $_SESSION['criador']['dni'];
+         header('location: home.php');
+         // echo $_SESSION['criador']['dni'];
         
-         $mensaje = "Inicio de sesión exitoso. ¡Bienvenido!";
+         // $mensaje = "Inicio de sesión exitoso. ¡Bienvenido!";
    }//si error login..
    else{
-      //session_destroy();
-      // header('location: ../../index.php');
-      $mensaje = "Las credenciales proporcionadas son incorrectas. Inténtalo de nuevo.";
+      session_destroy();
+      header('location: ../../index.php');
+      // $mensaje = "Las credenciales proporcionadas son incorrectas. Inténtalo de nuevo.";
    }
    
 }else{

@@ -28,17 +28,17 @@
     
     
     <div class="col-6 col-lg-6 col-md-6 mob20 wow fadeIn clip">
-       <img class="img-fluid ejemplares-img" id="" src="img/horses/ejemplar2.jpg" alt="">
+       <img class="img-fluid ejemplares-img" id="" src="img/horses/ejemplar-1.jpg" alt="">
     </div>
       
   </div>
   <div class="row">
     
    <div class="col-6 col-lg-6 col-md-6 mob20 wow fadeIn clip">
-      <img class="img-fluid  ejemplares-img " id="" src="img/horses/ejemplar3.jpg" alt="">
+      <img class="img-fluid  ejemplares-img " id="" src="img/horses/ejemplar-3.jpg" alt="">
     </div>
     <div class="col-6 col-lg-6 col-md-6  mob20 wow fadeIn clip">
-       <img class="img-fluid ejemplares-img" id="" src="img/horses/ejemplar4.jpg" alt="">
+       <img class="img-fluid ejemplares-img" id="" src="img/horses/ejemplar-2.jpg" alt="">
     </div>
       
   </div>
@@ -56,7 +56,7 @@
    <img class="img-fluid  ejemplares-img " id="" src="img/horses/ejemplar3.jpg" alt="">
     </div>
     <div class="col-lg-6 col-md-6 col-6 wow fadeIn clip">
-       <img class="img-fluid ejemplares-img" id="" src="img/horses/ejemplar4.jpg" alt="">
+       <img class="img-fluid ejemplares-img" id="" src="img/horses/ejemplar-4.jpg" alt="">
                  
       </div>
       
@@ -64,7 +64,7 @@
   <div class="row">
     
    <div class="col-6 col-lg-6 col-md-6 wow fadeIn clip " >
-   <img class="img-fluid  ejemplares-img " id="" src="img/horses/ejemplar1.jpg" alt="">
+   <img class="img-fluid  ejemplares-img " id="" src="img/horses/ejemplar-5.jpg" alt="">
     </div>
     <div class="col-lg-6 col-md-6 col-6 wow fadeIn clip">
        <img class="img-fluid ejemplares-img" id="" src="img/horses/ejemplar2.jpg" alt="">

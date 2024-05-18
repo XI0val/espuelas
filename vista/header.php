@@ -12,9 +12,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <title>Gahemor Criaderos</title>
-    <meta name="description" content="Gaemor Criaderos de caballo chileno">
-    <meta name="author" content="Gaemor">
-    <meta name="keywords" content="Gaemor Criaderos de caballo chileno">
+    <meta name="description" content="Gahemor Criaderos de caballo chileno">
+    <meta name="author" content="Gahemor">
+    <meta name="keywords" content="Gahemor Criaderos de caballo chileno">
 
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">

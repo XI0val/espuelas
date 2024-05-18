@@ -1,9 +1,12 @@
 <?php
 require_once 'base-model.php';
 
+
  class UbicacionModel extends BaseModel{
     private $id_ubicacion;
     private $nombre;
+    private $latitud;
+    private $longitud;
     private $id_criador;
 
 
@@ -16,10 +19,14 @@ require_once 'base-model.php';
             if (is_a($args[0], "UbicacionModel")) {//si nos llega un objeto Criador
                 $this->id_ubicacion = $args[0]->getidubicacion();
                 $this->nombre = $args[0]->getnombre();
+                $this->latitud = $args[0]->getlatitud();
+                $this->longitud = $args[0]->getlongitud();
                 $this->id_criador = $args[0]->getidcriador();
             } else {//si es un array
                 $this->id_ubicacion = $args[0]["id_ubicacion"];
                 $this->nombre = $args[0]["nombre"];
+                $this->latitud = $args[0]["latitud"];
+                $this->longitud = $args[0]["longitud"];
                 $this->id_criador = $args[0]["id_criador"];
             }
         }
@@ -41,6 +48,22 @@ require_once 'base-model.php';
     public function setnombre($nombre)
     {
         $this->nombre = $nombre;
+    }
+    public function getlatitud()
+    {
+        return $this->latitud;
+    }
+    public function setlatitud($latitud)
+    {
+        $this->latitud = $latitud;
+    }
+    public function getlongitud()
+    {
+        return $this->longitud;
+    }
+    public function setlongitud($longitud)
+    {
+        $this->longitud = $longitud;
     }
     public function getidcriador()
     {
@@ -67,17 +90,17 @@ require_once 'base-model.php';
             try {
 
                 foreach ($ubicacion as $key => $value) {
-                    //solo actualizamos los valores que nos interesan y nunca el id_ubicacion
+                    //solo actualizamos los valores que nos interesan y nunca el id_animal
                     if ($value != null && $key != "id_ubicacion") {
                         $sql = "UPDATE ubicacion SET " . $key . " = ? WHERE id_ubicacion = ?";
                         $stmt = $pdo->prepare($sql);
-                        $stmt->execute([$value, $ubicacion->getidubicacion()]);
+                        $stmt->execute([$value, $ubicacion["id_ubicacion"]]);
                     }
                 }
-                $result = '¡Actualización correcta!';
+                $result = true;
 
             } catch (Exception $e) {
-                $result = $e->getMessage();
+                $result = false;
             }
             return $result;
         } else {
@@ -94,10 +117,14 @@ require_once 'base-model.php';
         $pdo = $this->getpdo();
         if ($pdo != null) {
             try{
-                $sql = "Delete from ubicacion where id_ubicacion = ?";
-                $stmt = $pdo->prepare($sql);
-                return $stmt->execute([$id_ubicacion]);
-
+                $animalesUbicacion = (new AnimalModel())->animalesPorUbicacion($id_ubicacion);
+                if($animalesUbicacion > 0) {
+                    return 'No se puede eliminar esta ubicación, aún quedan animales';
+                } else {
+                    $sql = "Delete from ubicacion where id_ubicacion = ?";
+                    $stmt = $pdo->prepare($sql);
+                    return $stmt->execute([$id_ubicacion]);
+                }
             }catch(Exception $e){
                 $result = $e->getMessage();
                 return false;
@@ -118,13 +145,15 @@ require_once 'base-model.php';
         $pdo = $this->getpdo();
         if ($pdo != null) {
             try{
-                $sql = "INSERT INTO ubicacion VALUES(?, ?, ?)";
+                $sql = "INSERT INTO ubicacion VALUES(?, ?, ?, ?, ?)";
 
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute([
                     null,
                     $ubicacion->getnombre(),
-                    $ubicacion->getidcriador(),
+                    $ubicacion->getlatitud(),
+                    $ubicacion->getlongitud(),
+                    $ubicacion->getidcriador()
                 ]);
                 $id_ubicacion = $pdo->lastInsertId();
                 return $id_ubicacion;

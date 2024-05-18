@@ -47,21 +47,52 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
             }
         
     }
+    //si existe sesion y se envian dos parametros
     if(count($_GET) === 2 && isset($_SESSION['criador']['dni'])) {
-       
+        //si la accion esta formada por dos letras y data es numerico
         if(preg_match("/^[a-z]{2}$/", $_GET['action']) && preg_match("/^[1-9]+$/", $_GET['data'])){
             //solicitud para actualizar un animal
             if($_GET['action'] === 'au'){
                 //recuperamos datos del animal desde bd
                 $result = animalPorId($_GET['data']);
                 //si la funcion nos devuelve un array con datos
+                //var_dump($result);
                 if(is_array($result) && count($result) > 8){
                     $_SESSION['datosAnimal'] = limpiaEspacios($result);
+
+
                     $contenido = OPCIONES_CRIADOR[$_GET['action']];
                 }else{
                     echo 'error al recuperar los datos del animal';
                 }
             }
+            if($_GET['action'] === 'uu'){
+                //recuperamos datos de la ubicación desde bd
+                $result = ubicacionPorId($_GET['data']);
+                //si la funcion nos devuelve un array con datos
+                if(is_array($result) && count($result) > 4){
+                    $_SESSION['datosUbicacion'] = limpiaEspacios($result);
+                    $contenido = OPCIONES_CRIADOR[$_GET['action']];
+                }else{
+                    echo 'error al recuperar los datos de la ubicación';
+                }
+            }
+            if($_GET['action'] === 'um'){                
+                //recuperamos datos de la ubicación desde bd
+                $result = ubicacionPorId($_GET['data']);
+                //si la funcion nos devuelve un array con datos
+                if(is_array($result) && count($result) > 4){
+                    $_SESSION['datosUbicacion'] = limpiaEspacios($result);
+                    
+                    $mapa = '<div class="div">'.$_SESSION['datosUbicacion']['nombre'].' </div>
+                    <div id="map" style="width:500px; height: 500px; margin-left: auto; margin-right: auto;">
+                    </div>';
+                }else{
+                    echo 'error al recuperar los datos de la ubicación';
+                }
+              
+            }
+
         }
     }      
     
@@ -75,33 +106,48 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['criador']['dni'])){
             $respuesta = checkPost($_POST);
             if(is_array($respuesta)){
                 switch ($_POST['form']) {
-                    case 'ac':
-                        $result = altaAnimal($respuesta);
-                        $mensaje = $result != false ? 'Añadido animal con id ' .$result : ' no se ha podido añadir el animal';
+                    case 'ac'://animal create
+
+                        //si hemos enviado los datos del form(nombre, sexo, raza...)
+                        if(!isset($respuesta['imagen']) && isset($respuesta['nombre'])){
+                            //print_r($respuesta);
+                            $ok = mueveFoto($respuesta);
+                            print_r($ok);
+                            if($ok){
+
+                                $respuesta['imagen'] = $_SESSION['datosAnimal']['imagen'];
+/*                                 $result = altaAnimal($respuesta);
+                                 $mensaje = $result != false ? 'Añadido animal con id ' .$result : ' no se ha podido añadir el animal'; */
+                            }
+                        }else{
+                            header('location: home.php?action=ac');
+                        }
                         break;
                     case 'au': //animal update
                         $result = editaAnimal($respuesta);
                         $mensaje = $result != false ? 'Editado animal correctamente' : 'no se ha podido editar el animal';
                         break;
-                    case 'uc': //animal create
-                        $result = altaUbicacion($respuesta);
-                        $mensaje = $result > 0 ? 'Se ha creado la ubicación correctamente' : 'no se ha podido crear la ubicación';
+                    case 'ad': //animal delete
+                        $result = borraAnimal($respuesta);
+                        $mensaje = $result != false ? 'Eliminado animal correctamente' : 'no se ha podido eliminar el animal';
                         break;
                     case 'ud': //ubicacion delete
                         $result = borraUbicacion($respuesta['id_ubicacion']);
-                        $mensaje = $result ? 'Se ha eliminado la ubicación correctamente' : 'no se ha podido eliminar la ubicación';
+                        $mensaje = $result;
+                        break;
+                    case 'uc': //ubicacion create
+                        $result = altaUbicacion($respuesta);
+                        $mensaje = $result > 0 ? 'Se ha creado la ubicación correctamente' : 'no se ha podido crear la ubicación';
                         break;
                     case 'uu': //ubicacion update
                         $result = editaUbicacion($respuesta);
                         $mensaje = $result > 0 ? 'Se ha creado la ubicación correctamente' : 'no se ha podido crear la ubicación';
                         break;
                     case 'cu': //criador update perfil
+                    case 'pu': //criador update password
+                        //var_dump($respuesta);   
                         $result = editaCriador($respuesta);
-                        $mensaje = $result ? 'Se ha modificado el perfil correctamente' : 'no se ha podido realizar la operación';
-                        header('location: home.php?action=cu');
-                        break;    
-                    case 'cp': //criador update password
-                        var_dump($_POST);
+                        $mensaje = $result ? 'Se ha modificado el perfil correctamente' : 'no se ha podido realizar la operación';                        
                         break;    
                     default:
                         # code...
@@ -109,13 +155,15 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['criador']['dni'])){
                 }
 
             }else{
-                $mensaje = ' no se ha podido realizar la operación';
+                $mensaje = $respuesta;
+                //var_dump($_POST);
             }
 
     }
 
 }
 
-include '../header.php';
+include 'header-home.php';
+include 'body-home.php';
 include 'menu-criador.php';
-include "../footer.php"; 
+include "footer-home.php"; 

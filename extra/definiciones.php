@@ -1,4 +1,5 @@
 <?php
+
 if(!defined('HOST')) {
     define('HOST', 'localhost');
 }
@@ -12,7 +13,10 @@ if(!defined('PASSWORD')) {
     define('PASSWORD', '');
 }
 if(!defined('IMAGEN_SIN_FOTO')) {
-    define('IMAGEN_SIN_FOTO', '../../img/sinfoto.png');
+    define('IMAGEN_SIN_FOTO', '../../img/sinfoto.jpg');
+}
+if(!defined('IMAGEN_SIN_FOTO_ANIMAL')) {
+    define('IMAGEN_SIN_FOTO_ANIMAL', '../../img/nofoto-caballo.png');
 }
 if(!defined('OPCIONES_CRIADOR')) {
     define('OPCIONES_CRIADOR', 

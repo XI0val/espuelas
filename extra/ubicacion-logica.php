@@ -4,6 +4,7 @@ include '../../extra/session.php';
 include '../../modelo/ubicacion-model.php';
 
 
+
 if(!isset($_SESSION['criador']['dni'])){
     header('Location: ../../index.php');
 }
@@ -30,12 +31,27 @@ function editaUbicacion($ubicacion){
 }
 
 /**
+ * funcion que recupera una ubicacion por su id
+ * recibe un array con los datos de la ubicación 
+ */
+function ubicacionPorId($id_ubicacion){
+    $result = (new UbicacionModel())->ubicacionPorId($id_ubicacion);
+    return $result;    
+}
+
+/**
  * funcion que solicita borrado de una ubicacion
  * recibe un id_ubicacion para borrar
  */
 function borraUbicacion($id_ubicacion){
-    $resultDelete = (new UbicacionModel())->eliminaUbicacion($id_ubicacion);
-    return $resultDelete;    
+    //comprobamos si quedan animales en la ubicacion
+    $animales = (new AnimalModel())->animalesPorUbicacion($id_ubicacion);
+    if(is_numeric($animales) && $animales === 0){
+        $resultDelete = (new UbicacionModel())->eliminaUbicacion($id_ubicacion);
+        return $resultDelete ? 'Ubicación eliminada correctamente' : $resultDelete; 
+    }  else {
+        return 'Aún quedan animales!!, debes borrarlos antes de eliminar la ubicación.';
+    }
 }
 
 /**
